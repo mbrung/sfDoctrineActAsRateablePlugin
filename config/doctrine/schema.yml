@@ -1,0 +1,17 @@
+options:
+  collate: utf8_unicode_ci
+  charset: utf8
+  
+Rating:
+  actAs:
+    Timestampable: ~
+  columns:
+    record_model: {type: string, length: 255}
+    record_id: {type: integer}
+    user_id: {type: integer}
+    score: {type: integer}
+  relations:
+    User: {class: SfGuardUser, local: user_id, alias: User}
+  indexes:
+    rating_model_user_idx:
+      fields: [record_model, record_id, user_id]
