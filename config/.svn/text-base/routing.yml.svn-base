@@ -1,0 +1,5 @@
+rating_save:
+  url: /rating/save
+  params: {module: rating, action: save}
+  requirements:
+    sf_method: [ post ]  

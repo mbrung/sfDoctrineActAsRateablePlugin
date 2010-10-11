@@ -4,9 +4,6 @@ class Doctrine_Template_Rateable extends Doctrine_Template
 {
   public function setTableDefinition()
   {
-  	$this->hasColumn('rating', 'tinyint');
-	$this->hasColumn('rating_score', 'integer');
-	$this->hasColumn('rating_count', 'integer');
     $this->addListener(new Doctrine_Template_Listener_Rateable($this->_options));
   }
   
