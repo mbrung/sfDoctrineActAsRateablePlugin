@@ -26,8 +26,8 @@ abstract class PluginRatingForm extends BaseRatingForm
   	
   	$this->widgetSchema["return_url"] = new sfWidgetFormInputHidden();  
   	$this->validatorSchema["return_url"] = new sfValidatorPass();	
-  	$this->widgetSchema["score"] = new sfWidgetFormChoice(array("choices"=>range(0,5)));
-  	$this->validatorSchema["score"] = new sfValidatorChoice(array("choices"=>range(0,5)));
+  	$this->widgetSchema["score"] = new sfWidgetFormChoice(array("choices"=>range(1,5)));
+  	$this->validatorSchema["score"] = new sfValidatorChoice(array("choices"=>range(1,5)));
 	$this->disableLocalCSRFProtection();
 
 	}
