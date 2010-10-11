@@ -18,11 +18,14 @@ class ratingActions extends sfActions
 		if ($this->form->isValid()) {
 			$this->form->getObject()->user_id = $this->getUser()->getGuardUser()->getPrimaryKey();
 			$this->form->save();
-		} else {
-			die();
-		}
+		} 
+		
 		if ($request->isXmlHttpRequest()) {
-			return $this->renderPartial("rating/form", array("form"=>$form));
+			return $this->renderText("Thank you for rating this ".$params["record_model"]);
+		}
+		
+		if ($request->isXmlHttpRequest()) {
+			return $this->renderPartial("rating/form", array("form"=>$this->form));
 		} else {
 			if (array_key_exists("return_url", $params)) {
 				$this->redirect($params["return_url"]);
