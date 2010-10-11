@@ -4,11 +4,7 @@
 <p>You have already rated this <?php echo $rateable_model?></p>
 <?php else:?>
 
-<?php echo jq_form_remote_tag(array(
-    'url'      => url_for('@rating_save'),
-    'update'   => 'rating_'.$rateable->id,
-    'complete' => jq_visual_effect('highlight', 'rating_'.$rateable->id),
-  )) ?>
+<form id="rating_form_<?php echo $rateable->id ?>" action="<?php echo url_for('@rating_save')?>" method="post">
 
 <?php echo $form ?>
 <input type="submit" value="Rate"></input>
@@ -16,3 +12,12 @@
 <?php endif;?>
 <?php endif;?>
 </div>
+
+<script>
+$('#rating_form_<?php echo $rateable->id ?>').submit(function() {
+	$.post("<?php echo url_for('@rating_save')?>", $(this).serialize(), function(data) {
+		$('#rating_form_<?php echo $rateable->id ?>').html(data);	
+	});
+	return false;
+});
+</script>
